@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "express": "^5.2.1",
+    "stripe": "^20.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  } 
+}

@@ -1,0 +1,28 @@
+services:
+  payment-sample:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - payment
+    env_file:
+      - .env
+    environment:
+      - DOMAIN=${DOMAIN}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - ENDPOINT_SECRET=${ENDPOINT_SECRET}
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: Dockerfile
+networks:
+  payment:
